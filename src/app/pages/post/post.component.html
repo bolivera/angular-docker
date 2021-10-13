@@ -1,0 +1,61 @@
+<div class="row contents">
+    <div class="col-12 col-sm-3 col-lg-3 col-lx-3">
+        <div class="card d-flex flex-column align-items-center justify-content-between text-center">
+            <div class="card-body">
+                <a href="#" class="avatar rounded-circle avatar-xl">
+                    <img [src]="user?.picture" class="w-50"
+                        width="120">
+                </a>
+                <div class="mt-4 user" *ngIf="user">
+                    <h3 class="mb-0 text-black text-bold">{{user?.firstName + ' '+user?.lastName }} </h3>
+                    <span class="d-block text-sm text-black opacity-8 mb-3 text-muted">Gender : {{user?.gender }}</span>
+                    <span class="d-block text-sm text-black opacity-8 mb-3 text-muted">Email : {{user?.email }}</span>
+                </div>
+                <hr>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-8 col-lg-8 col-lx-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="post">
+                    <div class="user-post">
+                        <img class="rounded-circle"
+                            src="https://preview.keenthemes.com/craft/assets/media/avatars/150-26.jpg" width="50"
+                            alt="">
+                    </div>
+                    <div class="float-end">
+                        <ul>
+                            <li><a [routerLink]="['/nuevo/post']" class="post-jb active btn btn-outline-danger" href="#" title="">Publicar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-3" *ngFor="let item of posts">
+            <div class="card-body">
+                <div class="post">
+                    <a [routerLink]="['/posts/user',  item.owner.id ]" routerLinkActive="router-link-active"
+                        class="user-posts float-start col-12">
+                        <img class="rounded-circle" [src]="item.owner.picture" class="float-start rounded-circle"
+                            width="50" alt="">
+                        <div class="usu-name float-start mx-3  mb-3">
+                            <h3 class="ml-3">{{item.owner.lastName}}</h3>
+                            <span>{{item.publishDate | date: 'shortTime'}}</span>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="col-12 mt-2">
+                    <p class="mt-2">{{ item.text }}</p>
+                    <img [src]="item.image" alt="" class="img-fluid">
+                    <hr>
+                    <button *ngFor="let tag of item.tags" type="button"
+                        class="btn btn-outline-primary m-1">{{tag}}</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

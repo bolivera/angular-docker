@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  red-social:
+    build: .
+    container_name: redSocialDockers
+    hostname: redSocialDockers
+    restart: always
+    ports:
+      - '80:80'
+
+volumes: {}
+
+
